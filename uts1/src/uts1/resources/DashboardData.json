@@ -1,0 +1,37 @@
+[
+  {
+    "nim": "2455201001",
+    "nama": "Ahmad Dani",
+    "departemen": "Teknik Informatika",
+    "status_krs": "Sudah",
+    "nilai": 3.8
+  },
+  {
+    "nim": "2455201002",
+    "nama": "Budi Santoso",
+    "departemen": "Teknik Elektro",
+    "status_krs": "Belum",
+    "nilai": 3.2
+  },
+  {
+    "nim": "2455201003",
+    "nama": "Citra Lestari",
+    "departemen": "Sistem Informasi",
+    "status_krs": "Sudah",
+    "nilai": 3.9
+  },
+  {
+    "nim": "2455201004",
+    "nama": "Dewi Sartika",
+    "departemen": "Teknik Informatika",
+    "status_krs": "Sudah",
+    "nilai": 3.5
+  },
+  {
+    "nim": "2455201005",
+    "nama": "Eko Prasetyo",
+    "departemen": "Teknik Elektro",
+    "status_krs": "Sudah",
+    "nilai": 3.1
+  }
+]

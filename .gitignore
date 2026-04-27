@@ -1,0 +1,10 @@
+# NetBeans/Ant build output
+**/build/
+**/dist/
+**/*.class
+**/nbproject/private/
+**/supabase/.temp/
+
+# OS/editor
+.DS_Store
+Thumbs.db
