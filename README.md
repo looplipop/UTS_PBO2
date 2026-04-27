@@ -144,7 +144,11 @@ Implementasi visual menggunakan:
 
 ### 1) Login Page
 ![Login Page](docs/images/1-login-page.png)
-**Penjelasan:** Halaman autentikasi awal. User memasukkan username & password untuk masuk ke sistem.  
+**Penjelasan:** Halaman autentikasi awal. User memasukkan username & password untuk masuk ke sistem.
+| username | password |
+|---|---|
+| **admin** | admin123 |
+| **operator** | operator123 |
 **Output:** Jika valid, sistem membaca role dan menampilkan menu sesuai hak akses.
 
 ### 2) Dashboard Page (Admin)
