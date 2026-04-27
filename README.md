@@ -118,28 +118,66 @@ Ringkasan cepat:
 
 ![Skema Visual](docs/images/skema-visual.png)
 
+Relasi utama:
+- `Mahasiswa` terhubung ke `KRS` dan `Nilai` lewat `nim`.
+- `Matakuliah` terhubung ke `KRS` dan `Nilai` lewat `kode_matakuliah`.
+- `Dosen` terhubung ke `Matakuliah` lewat `kode_dosen`.
+- `users` dipakai untuk autentikasi dan role (`Admin` / `Operator`).
+
+## Penjelasan Visual Dashboard
+
+Di halaman Dashboard, ringkasan dan chart diambil langsung dari data database:
+
+- **Kartu statistik:** Total Mahasiswa, Sudah KRS, Belum KRS, Rata-rata Grade.
+- **Filter jurusan:** memilih prodi tertentu atau `SEMUA`.
+- **Chart 1:** *Stacked Bar* pendaftaran KRS per departemen (sudah/belum KRS).
+- **Chart 2:** *Donut Chart* distribusi grade akademik (A/B/C/D).
+
+Implementasi visual menggunakan:
+- **Java Swing + Java2D custom rendering** (tanpa library chart eksternal).
+- Komponen chart ada di `uts1/src/uts1/ui/ChartComponents.java`:
+  - `ChartComponents.StackedBarChart`
+  - `ChartComponents.DonutChart`
+- Data dashboard dihitung di `uts1/src/uts1/MainMenu.java` pada metode `fetchDashboardStats(...)`.
+
 ## Screenshot Aplikasi
 
 ### 1) Login Page
 ![Login Page](docs/images/1-login-page.png)
+**Penjelasan:** Halaman autentikasi awal. User memasukkan username & password untuk masuk ke sistem.  
+**Output:** Jika valid, sistem membaca role dan menampilkan menu sesuai hak akses.
 
 ### 2) Dashboard Page (Admin)
 ![Dashboard Admin](docs/images/2-dashboard-admin.png)
+**Penjelasan:** Ringkasan kondisi akademik secara real-time.  
+**Informasi utama:** total mahasiswa, status KRS (sudah/belum), rata-rata grade, visual bar + donut chart, dan filter jurusan.
 
 ### 3) Mahasiswa Page (Admin)
 ![Mahasiswa Admin](docs/images/3-mahasiswa-admin.png)
+**Penjelasan:** Modul CRUD data mahasiswa (NIM, nama, prodi, kelas, angkatan, semester).  
+**Aksi:** `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, dan pencarian data.
 
 ### 4) Dosen Page (Admin)
 ![Dosen Admin](docs/images/4-dosen-admin.png)
+**Penjelasan:** Modul CRUD data dosen dan pemetaan mata kuliah yang diampu.  
+**Aksi:** `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, dan pencarian.
 
 ### 5) Mata Kuliah Page (Admin)
 ![Mata Kuliah Admin](docs/images/5-matakuliah-admin.png)
+**Penjelasan:** Modul CRUD data mata kuliah dan jadwal (SKS, dosen, semester, hari, jam, ruangan).  
+**Aksi:** `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, serta filter/pencarian.
 
 ### 6) Ganti Password Page
 ![Ganti Password](docs/images/6-ganti-password.png)
+**Penjelasan:** Fitur keamanan akun untuk mengganti password user yang sedang login.  
+**Aksi:** Verifikasi password lama dan simpan password baru.
 
 ### 7) KRS Page (Operator)
 ![KRS Operator](docs/images/7-krs-operator.png)
+**Penjelasan:** Pengelolaan Kartu Rencana Studi per mahasiswa dan semester.  
+**Aksi:** pilih mahasiswa+semester, tampilkan mata kuliah, tambah KRS, batalkan KRS, ambil MK atas/mengulang jika memenuhi syarat.
 
 ### 8) Nilai Page (Operator)
 ![Nilai Operator](docs/images/8-nilai-operator.png)
+**Penjelasan:** Input dan manajemen nilai akademik per mahasiswa dan mata kuliah.  
+**Aksi:** isi komponen nilai (absensi, tugas, quiz, UTS, UAS), hitung otomatis nilai akhir+grade, lalu `Tambah`, `Update`, `Hapus`, dan filter grade.
