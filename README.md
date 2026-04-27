@@ -17,8 +17,9 @@
 4. [Tugas & Hak Akses Role](#tugas--hak-akses-role)
 5. [Cara Menggunakan](#cara-menggunakan)
 6. [Panduan Penggunaan Lengkap](#panduan-penggunaan-lengkap)
-7. [Skema Visual Database](#skema-visual-database)
-8. [Screenshot Aplikasi](#screenshot-aplikasi)
+7. [Use Case & Alur Kerja (Visual)](#use-case--alur-kerja-visual)
+8. [Skema Visual Database](#skema-visual-database)
+9. [Screenshot Aplikasi](#screenshot-aplikasi)
 
 ## Fitur Utama
 
@@ -46,7 +47,9 @@ UTS_PBO2/
 ├── .gitignore
 ├── uts_pbo2.sql                 # skema SQL awal
 ├── docs/
-│   └── images/                  # screenshot UI + skema visual database
+│   ├── images/                  # screenshot UI + skema visual database
+│   ├── PANDUAN-PENGGUNAAN.md    # panduan operasional per role
+│   └── USECASE-ALUR-KERJA.md    # use case & alur visual (Mermaid)
 ├── uts1/                        # project utama Java Swing (NetBeans/Ant)
 │   ├── src/uts1/                # source code aplikasi
 │   ├── lib/                     # dependency JDBC
@@ -101,6 +104,10 @@ Panduan detail per halaman (Admin & Operator) tersedia di:
 
 **[`docs/PANDUAN-PENGGUNAAN.md`](docs/PANDUAN-PENGGUNAAN.md)**
 
+Untuk use case dan alur visual lengkap:
+
+**[`docs/USECASE-ALUR-KERJA.md`](docs/USECASE-ALUR-KERJA.md)**
+
 Ringkasan cepat:
 
 | Role | Halaman | Aksi Utama |
@@ -113,6 +120,66 @@ Ringkasan cepat:
 | **Operator** | Dashboard | Monitoring ringkasan operasional akademik |
 | **Operator** | KRS | Pilih mahasiswa+semester, `Tampilkan`, `Tambah KRS`, `Batalkan KRS`, ambil MK atas/mengulang |
 | **Operator** | Nilai | Input komponen nilai, hitung otomatis nilai akhir/grade, `Tambah`, `Update`, `Hapus`, filter grade |
+
+## Use Case & Alur Kerja (Visual)
+
+### Use Case ringkas (Role vs Fitur)
+
+```mermaid
+flowchart LR
+    A[Admin] --> U1[Login]
+    A --> U2[Dashboard]
+    A --> U3[Kelola Mahasiswa]
+    A --> U4[Kelola Dosen]
+    A --> U5[Kelola Mata Kuliah]
+    A --> U6[Ganti Password]
+
+    O[Operator] --> U1
+    O --> U2
+    O --> U7[Kelola KRS]
+    O --> U8[Kelola Nilai]
+    O --> U6
+```
+
+### Alur kerja Admin
+
+```mermaid
+flowchart TD
+    S1([Mulai]) --> L1[Login sebagai Admin]
+    L1 --> D1[Dashboard: lihat ringkasan]
+    D1 --> M1{Kelola data apa?}
+    M1 -->|Mahasiswa| M2[Tambah/Update/Hapus data mahasiswa]
+    M1 -->|Dosen| M3[Tambah/Update/Hapus data dosen]
+    M1 -->|Mata Kuliah| M4[Tambah/Update/Hapus MK dan jadwal]
+    M2 --> C1[Validasi & simpan ke database]
+    M3 --> C1
+    M4 --> C1
+    C1 --> P1{Perlu ubah password?}
+    P1 -->|Ya| P2[Ganti Password]
+    P1 -->|Tidak| E1([Selesai])
+    P2 --> E1
+```
+
+### Alur kerja Operator
+
+```mermaid
+flowchart TD
+    S2([Mulai]) --> L2[Login sebagai Operator]
+    L2 --> D2[Dashboard: pantau progres akademik]
+    D2 --> K1[Pilih menu KRS]
+    K1 --> K2[Pilih mahasiswa + semester]
+    K2 --> K3[Tampilkan mata kuliah]
+    K3 --> K4[Tambah/Batalkan KRS]
+    K4 --> N1[Pilih menu Nilai]
+    N1 --> N2[Pilih mahasiswa + mata kuliah]
+    N2 --> N3[Input Absensi/Tugas/Quiz/UTS/UAS]
+    N3 --> N4[Sistem hitung nilai akhir + grade]
+    N4 --> N5[Simpan / Update / Hapus nilai]
+    N5 --> P3{Perlu ubah password?}
+    P3 -->|Ya| P4[Ganti Password]
+    P3 -->|Tidak| E2([Selesai])
+    P4 --> E2
+```
 
 ## Skema Visual Database
 
