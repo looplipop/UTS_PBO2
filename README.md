@@ -108,6 +108,8 @@ Untuk use case dan alur visual lengkap:
 
 **[`docs/USECASE-ALUR-KERJA.md`](docs/USECASE-ALUR-KERJA.md)**
 
+Dokumen tersebut juga berisi **penjelasan tiap alur** dan **skenario use case detail** (aktor, precondition, alur utama, alternatif, postcondition).
+
 Ringkasan cepat:
 
 | Role | Halaman | Aksi Utama |
