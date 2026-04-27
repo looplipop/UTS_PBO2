@@ -105,7 +105,7 @@ Ringkasan cepat:
 
 | Role | Halaman | Aksi Utama |
 |---|---|---|
-| **Admin** | Dashboard | Monitoring ringkasan data mahasiswa, KRS, nilai, distribusi grade |
+| **Admin/Operator** | Dashboard | Monitoring ringkasan data mahasiswa, KRS, nilai, distribusi grade |
 | **Admin** | Mahasiswa | `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, pencarian/filter |
 | **Admin** | Dosen | `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, pencarian/filter |
 | **Admin** | Mata Kuliah | `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, relasi dosen & jadwal |
