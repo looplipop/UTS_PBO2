@@ -1,20 +1,71 @@
 # UTS_PBO2 - Sistem Informasi Akademik UTB
 
-`UTS_PBO2` adalah aplikasi desktop Java Swing untuk pengelolaan data akademik kampus (mahasiswa, dosen, mata kuliah, KRS, dan nilai) dengan backend Supabase.
+`UTS_PBO2` adalah aplikasi desktop **Java Swing** untuk pengelolaan data akademik kampus (mahasiswa, dosen, mata kuliah, KRS, dan nilai) dengan backend **Supabase**.
 
-## Pengenalan Aplikasi
+## Fitur Utama
 
-Aplikasi ini dirancang untuk memisahkan alur kerja berdasarkan peran pengguna agar operasional akademik lebih rapi:
+1. Login multi-role (`admin` dan `operator`).
+2. Dashboard ringkasan data akademik.
+3. Manajemen data mahasiswa.
+4. Manajemen data dosen.
+5. Manajemen data mata kuliah.
+6. Pengelolaan KRS.
+7. Pengelolaan nilai (absensi, tugas, quiz, UTS, UAS, nilai akhir, grade, status).
+8. Ganti password user.
 
-1. **Admin** berfokus pada master data akademik dan monitoring dashboard.
-2. **Operator** berfokus pada transaksi akademik (KRS dan nilai).
+## Struktur Folder Project
 
-## Hak Akses Berdasarkan Role
+```text
+UTS_PBO2/
+├── README.md
+├── .gitignore
+├── uts_pbo2.sql                 # skema SQL awal
+├── docs/
+│   └── images/                  # screenshot UI + skema visual database
+├── uts1/                        # project utama Java Swing (NetBeans/Ant)
+│   ├── src/uts1/                # source code aplikasi
+│   ├── lib/                     # dependency JDBC
+│   ├── supabase/migrations/     # migration SQL
+│   ├── build.xml                # build script Ant
+│   └── manifest.mf
+└── uts/                         # project lama/arsip
+```
 
-| Role | Fitur yang Bisa Diakses |
-|---|---|
-| **Admin** | Dashboard, Mahasiswa, Dosen, Mata Kuliah, Ganti Password |
-| **Operator** | KRS, Nilai, Ganti Password |
+## Tugas & Hak Akses Role
+
+| Role | Menu yang Bisa Diakses | Tugas Utama |
+|---|---|---|
+| **Admin** | Dashboard, Mahasiswa, Dosen, Mata Kuliah, Ganti Password | Monitoring data akademik, kelola master data mahasiswa/dosen/mata kuliah, maintenance akun sendiri |
+| **Operator** | Dashboard, KRS, Nilai, Ganti Password | Input dan update transaksi KRS, input komponen nilai sampai nilai akhir, maintenance akun sendiri |
+
+## Cara Menggunakan
+
+### 1) Pakai file `.jar` (siap pakai)
+
+1. Download rilis terbaru di: `https://github.com/looplipop/UTS_PBO2/releases/latest`
+2. Ambil file `uts1-dist-v1.0.0.zip` lalu ekstrak.
+3. Set environment variable Supabase:
+
+```bash
+export SUPABASE_URL="https://your-project.supabase.co"
+export SUPABASE_ANON_KEY="your-anon-key"
+export SUPABASE_SERVICE_KEY="your-service-role-key"
+```
+
+4. Jalankan aplikasi:
+
+```bash
+cd uts1-dist-v1.0.0
+java -jar uts1.jar
+```
+
+### 2) Build dari source code
+
+```bash
+cd uts1
+ant clean test jar
+java -jar dist/uts1.jar
+```
 
 ## Skema Visual Database
 
@@ -45,25 +96,3 @@ Aplikasi ini dirancang untuk memisahkan alur kerja berdasarkan peran pengguna ag
 
 ### 8) Nilai Page (Operator)
 ![Nilai Operator](docs/images/8-nilai-operator.png)
-
-## Cara Menjalankan
-
-Set environment variable terlebih dahulu:
-
-```bash
-export SUPABASE_URL="https://your-project.supabase.co"
-export SUPABASE_ANON_KEY="your-anon-key"
-export SUPABASE_SERVICE_KEY="your-service-role-key"
-```
-
-```bash
-cd uts1
-ant clean test
-ant run
-```
-
-## Struktur Penting
-
-- `uts1/` -> project utama Java Swing (NetBeans/Ant).
-- `uts_pbo2.sql` -> dump/skema SQL awal.
-- `docs/images/` -> skema visual dan screenshot antarmuka.
