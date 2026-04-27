@@ -9,6 +9,17 @@
 
 **Quick links:** [Download Rilis Terbaru](https://github.com/looplipop/UTS_PBO2/releases/latest) · [Skema Database](#skema-visual-database) · [Screenshot](#screenshot-aplikasi)
 
+## Daftar Isi
+
+1. [Fitur Utama](#fitur-utama)
+2. [Stack Teknologi](#stack-teknologi)
+3. [Struktur Folder Project](#struktur-folder-project)
+4. [Tugas & Hak Akses Role](#tugas--hak-akses-role)
+5. [Cara Menggunakan](#cara-menggunakan)
+6. [Panduan Penggunaan Lengkap](#panduan-penggunaan-lengkap)
+7. [Skema Visual Database](#skema-visual-database)
+8. [Screenshot Aplikasi](#screenshot-aplikasi)
+
 ## Fitur Utama
 
 1. Login multi-role (`admin` dan `operator`).
@@ -83,6 +94,25 @@ cd uts1
 ant clean test jar
 java -jar dist/uts1.jar
 ```
+
+## Panduan Penggunaan Lengkap
+
+Panduan detail per halaman (Admin & Operator) tersedia di:
+
+**[`docs/PANDUAN-PENGGUNAAN.md`](docs/PANDUAN-PENGGUNAAN.md)**
+
+Ringkasan cepat:
+
+| Role | Halaman | Aksi Utama |
+|---|---|---|
+| **Admin** | Dashboard | Monitoring ringkasan data mahasiswa, KRS, nilai, distribusi grade |
+| **Admin** | Mahasiswa | `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, pencarian/filter |
+| **Admin** | Dosen | `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, pencarian/filter |
+| **Admin** | Mata Kuliah | `Refresh`, `Tambah`, `Update`, `Hapus`, `Reset`, relasi dosen & jadwal |
+| **Admin/Operator** | Ganti Password | Ubah password akun aktif |
+| **Operator** | Dashboard | Monitoring ringkasan operasional akademik |
+| **Operator** | KRS | Pilih mahasiswa+semester, `Tampilkan`, `Tambah KRS`, `Batalkan KRS`, ambil MK atas/mengulang |
+| **Operator** | Nilai | Input komponen nilai, hitung otomatis nilai akhir/grade, `Tambah`, `Update`, `Hapus`, filter grade |
 
 ## Skema Visual Database
 
